@@ -239,12 +239,3 @@ chmod 755 src/test/resources/screenshots/
 4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
 5. Crear Pull Request
 
-## 📝 Licencia
-
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.md) para detalles.
-
-## 📞 Contacto
-
-- **Proyecto**: Suite de Automatización Funcional
-- **Versión**: 1.0.0
-- **Autor**: Equipo QA Automation
