@@ -1,0 +1,9 @@
+firstName,lastName,email,phone,gender,password,confirmPassword,expectedResult,description
+Juan,Perez,juan.perez@test.com,1234567890,Male,Test123!,Test123!,success,Registro exitoso válido
+Maria,Lopez,maria.lopez@test.com,9876543210,FeMale,Password123!,Password123!,success,Registro exitoso femenino
+,Gonzalez,test@test.com,1111111111,Male,Test123!,Test123!,invalid,Nombre vacío
+Pedro,,pedro@test.com,2222222222,Male,Test123!,Test123!,invalid,Apellido vacío
+Carlos,Rodriguez,invalid-email,3333333333,Male,Test123!,Test123!,invalid,Email inválido
+Ana,Martinez,ana@test.com,abc123,FeMale,Test123!,Test123!,invalid,Teléfono inválido
+Luis,Garcia,luis@test.com,4444444444,Male,123,123,invalid,Contraseña débil
+Sofia,Herrera,sofia@test.com,5555555555,FeMale,Test123!,Different123!,invalid,Contraseñas no coinciden

@@ -1,0 +1,254 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+replay_pid*
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# IDE - IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# IDE - Eclipse
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+.project
+.classpath
+
+# IDE - Visual Studio Code
+.vscode/
+*.code-workspace
+
+# IDE - NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Selenium WebDriver
+drivers/
+*.exe
+chromedriver*
+geckodriver*
+msedgedriver*
+operadriver*
+
+# Test Reports
+test-output/
+target/surefire-reports/
+target/site/
+allure-results/
+allure-report/
+extent-reports/
+
+# Screenshots and Videos
+screenshots/
+videos/
+test-recordings/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.mp4
+*.avi
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Windows
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# Configuration files with sensitive data
+config/local.properties
+src/test/resources/config/local.properties
+application-local.properties
+*.env
+.env
+
+# Test data with sensitive information
+testdata/sensitive/
+testdata/production/
+testdata/*.xlsx
+testdata/*.xls
+!testdata/sample*.xlsx
+!testdata/template*.xlsx
+
+# Backup files
+*.backup
+*.bak
+*.orig
+
+# Node modules (if using any JS tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python (if using any Python tools)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# Docker
+.dockerignore
+Dockerfile
+docker-compose.yml
+docker-compose.override.yml
+
+# Kubernetes
+*.yaml
+*.yml
+!testng.xml
+!pom.xml
+
+# Security and credentials
+*.key
+*.pem
+*.p12
+*.jks
+credentials.json
+secrets.json
+
+# Performance test results
+*.jmx
+*.jtl
+
+# Coverage reports
+jacoco.exec
+*.exec
+
+# SonarQube
+.sonar/
+.scannerwork/
+
+# Gradle (if switching to Gradle)
+.gradle/
+build/
+gradle-app.setting
+!gradle-wrapper.jar
+!gradle-wrapper.properties
+
+# Local development
+local/
+dev/
+development/
+
+# Cache directories
+.cache/
+.tmp/
+
+# Editor backups
+*~
+*.swp
+*.swo
+.#*
+\#*#
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+.idea_modules/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Atom
+.atom/
+
+# Vim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Custom project ignores
+# Add any project-specific files or directories here
+custom-config/
+local-scripts/
+personal-notes/

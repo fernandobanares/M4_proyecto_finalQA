@@ -1,0 +1,8 @@
+username,password,expected_result,description
+standard_user,secret_sauce,success,Usuario válido estándar
+locked_out_user,secret_sauce,locked,Usuario bloqueado
+problem_user,secret_sauce,success,Usuario con problemas
+performance_glitch_user,secret_sauce,success,Usuario con problemas de rendimiento
+invalid_user,wrong_password,invalid,Credenciales inválidas
+,secret_sauce,invalid,Usuario vacío
+standard_user,,invalid,Contraseña vacía
