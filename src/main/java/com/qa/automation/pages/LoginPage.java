@@ -3,6 +3,7 @@ package com.qa.automation.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -45,7 +46,34 @@ public class LoginPage extends BasePage {
     }
     
     public boolean isLoginPageDisplayed() {
-        return loginLogo.isDisplayed();
+        try {
+            Thread.sleep(2000);
+            String currentUrl = driver.getCurrentUrl();
+            System.out.println("URL actual: " + currentUrl);
+            
+            // Verificar URL
+            boolean urlIsCorrect = currentUrl.contains("saucedemo.com") && 
+                                  !currentUrl.contains("inventory");
+            
+            // Verificar elementos de login (usar selectores que sí existen)
+            boolean hasLoginElements = false;
+            try {
+                hasLoginElements = !driver.findElements(By.id("user-name")).isEmpty() &&
+                                  !driver.findElements(By.id("password")).isEmpty() &&
+                                  !driver.findElements(By.id("login-button")).isEmpty();
+            } catch (Exception e) {
+                System.out.println("Error verificando elementos: " + e.getMessage());
+            }
+            
+            boolean result = urlIsCorrect && hasLoginElements;
+            System.out.println("Página de login detectada: " + result);
+            
+            return result;
+            
+        } catch (Exception e) {
+            System.out.println("Error verificando página de login: " + e.getMessage());
+            return false;
+        }
     }
     
     public InventoryPage login(String username, String password) {

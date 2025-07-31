@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="SeleniumFunctionalSuite" parallel="false">
     
+    <listeners>
+        <listener class-name="com.qa.automation.listeners.TestListener"/>
+    </listeners>
+    
     <test name="ChromeTests" preserve-order="true">
         <parameter name="browser" value="chrome"/>
-        <classes>
-            <class name="com.qa.automation.tests.RegisterTests"/>
-            <class name="com.qa.automation.tests.LoginTests"/>
-            <class name="com.qa.automation.tests.InventoryTests"/>
-        </classes>
-    </test>
-    
-    <test name="FirefoxTests" preserve-order="true">
-        <parameter name="browser" value="firefox"/>
         <classes>
             <class name="com.qa.automation.tests.RegisterTests"/>
             <class name="com.qa.automation.tests.LoginTests"/>

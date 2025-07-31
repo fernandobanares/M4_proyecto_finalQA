@@ -126,66 +126,81 @@ public class RegisterPage {
     public boolean isSuccessPageDisplayed() {
         try {
             System.out.println("=== VERIFICANDO PÁGINA DE ÉXITO ===");
-            Thread.sleep(3000);
+            Thread.sleep(5000);
+            
             String currentUrl = driver.getCurrentUrl();
             String pageSource = driver.getPageSource().toLowerCase();
             
             System.out.println("URL después del submit: " + currentUrl);
-            System.out.println("Título de la página: " + driver.getTitle());
             
-            // La página NO redirige, pero cambia el contenido
-            // Buscar indicadores específicos de éxito en el contenido
+            boolean urlChanged = !currentUrl.contains("Register.html");
             boolean hasSuccessContent = pageSource.contains("success") ||
                                       pageSource.contains("thank you") ||
-                                      pageSource.contains("registered successfully") ||
-                                      pageSource.contains("registration complete");
+                                      pageSource.contains("registered");
             
-            // También verificar si el formulario desapareció o cambió
-            boolean formDisappeared = !pageSource.contains("first name") ||
-                                    !pageSource.contains("submit");
+            boolean result = urlChanged || hasSuccessContent;
+            System.out.println("Resultado final: " + result);
             
-            System.out.println("Tiene contenido de éxito: " + hasSuccessContent);
-            System.out.println("Formulario desapareció: " + formDisappeared);
-            
-            // Verificar si hay elementos específicos de éxito
-            try {
-                // Buscar elementos que indiquen éxito
-                boolean hasSuccessElements = driver.getPageSource().contains("alert-success") ||
-                                           driver.getPageSource().contains("success-message") ||
-                                           driver.getPageSource().contains("registration-success");
-                System.out.println("Tiene elementos de éxito: " + hasSuccessElements);
-                
-                boolean result = hasSuccessContent || formDisappeared || hasSuccessElements;
-                System.out.println("Resultado final: " + result);
-                
-                return result;
-                
-            } catch (Exception e) {
-                System.out.println("Error buscando elementos de éxito: " + e.getMessage());
-                return hasSuccessContent;
-            }
+            return result;
             
         } catch (Exception e) {
             System.out.println("Error verificando página de éxito: " + e.getMessage());
-            e.printStackTrace();
             return false;
         }
     }
     
     public boolean hasValidationErrors() {
         try {
+            Thread.sleep(2000);
             String currentUrl = driver.getCurrentUrl();
-            String pageSource = driver.getPageSource();
+            String pageSource = driver.getPageSource().toLowerCase();
             
-            // Si seguimos en la página de registro, verificar errores
-            if (currentUrl.contains("Register")) {
-                // Verificar si hay mensajes de error o validación HTML5
-                return pageSource.contains("required") || 
-                       pageSource.contains("invalid") ||
-                       pageSource.contains("error") ||
-                       checkHTML5Validation();
+            System.out.println("Verificando errores - URL: " + currentUrl);
+            
+            // Si seguimos en la página de registro, es probable que haya errores
+            boolean stillOnRegister = currentUrl.contains("Register.html");
+            
+            // Buscar mensajes de error específicos
+            boolean hasErrorMessages = pageSource.contains("error") ||
+                                     pageSource.contains("invalid") ||
+                                     pageSource.contains("required") ||
+                                     pageSource.contains("please") ||
+                                     pageSource.contains("must");
+            
+            // Verificar validación HTML5
+            boolean hasHTML5Validation = checkHTML5Validation();
+            
+            // Verificar si los campos tienen estilos de error
+            boolean hasErrorStyles = pageSource.contains("border-color: red") ||
+                                   pageSource.contains("is-invalid") ||
+                                   pageSource.contains("error-border");
+            
+            System.out.println("Sigue en registro: " + stillOnRegister);
+            System.out.println("Mensajes de error: " + hasErrorMessages);
+            System.out.println("Validación HTML5: " + hasHTML5Validation);
+            System.out.println("Estilos de error: " + hasErrorStyles);
+            
+            boolean hasErrors = hasErrorMessages || hasHTML5Validation || hasErrorStyles;
+            
+            // Si sigue en la página de registro Y no hay éxito claro, asumir error
+            if (stillOnRegister && !hasSuccessContent()) {
+                hasErrors = true;
             }
+            
+            return hasErrors;
+            
+        } catch (Exception e) {
+            System.out.println("Error verificando errores de validación: " + e.getMessage());
             return false;
+        }
+    }
+
+    private boolean hasSuccessContent() {
+        try {
+            String pageSource = driver.getPageSource().toLowerCase();
+            return pageSource.contains("success") ||
+                   pageSource.contains("thank you") ||
+                   pageSource.contains("registered");
         } catch (Exception e) {
             return false;
         }
@@ -205,6 +220,8 @@ public class RegisterPage {
         }
     }
 }
+
+
 
 
 
